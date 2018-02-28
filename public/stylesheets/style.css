@@ -1,0 +1,149 @@
+body
+{
+    background-color: beige;
+    -webkit-user-select:none;
+    margin:0;
+    font-family: Georgia;
+    text-align: center;
+}
+
+.navBar
+{
+    border-right: solid;
+    border-right-width: thin;
+    width:20%;
+    max-width: 200px;
+    height:95vh;
+    float:left;
+    text-align:center;
+    background-color: #43609C;
+    padding-top: 5vh;
+    box-shadow: 0 0 1vh Black;
+}
+
+.deck
+{
+    background-color: blanchedalmond;
+    width:70%;
+    max-width: 600px;
+    height:100vh;
+    box-shadow: 0 0 10px black;
+    display: inline-block;
+}
+
+.banner
+{
+    font-size:2.5vh;
+    padding:2vh 0;
+    margin: 2vh 0;
+    background-color: #aaaaaa;
+    box-shadow: 0 0 1vh Black;
+}
+
+.banner.active
+{
+    background-color: #dddddd;
+}
+
+.card
+{
+    display:inline-block;
+    vertical-align:top;
+    max-width:14vh;
+    width:23.3333%;
+    height:20vh;
+    margin:2.5vh 5%;
+    border-radius: 4px;
+    box-shadow: 0 0 10px Black;
+}
+
+.card.selected
+{
+    box-shadow:0 .5vh 1vh black;
+}
+
+.card.bgcolor0
+{
+    background-color: cornflowerblue;
+}
+
+.card.bgcolor1
+{
+    background-color: darkkhaki;
+}
+
+.card.bgcolor2
+{
+    background-color: mediumpurple;
+}
+
+.shape
+{
+    text-align:center;
+    width:100%;
+    text-shadow:0 0 .5vh white;
+    height:4vh;
+    font-size:4vh;
+    margin:1vh 0;
+}
+
+.shape.color0
+{
+    color:darkred;
+}
+
+.shape.color1
+{
+    color:rgb(43,52,227);
+}
+
+.shape.color2
+{
+    color:darkgreen;
+}
+
+.scoreCard
+{
+    position:absolute;
+    background:white;
+    box-shadow:2vh 2vh 5vh Black;
+    margin:20vh 35%;
+    padding:5vh 2%;
+    left: 0;
+    top: 0;
+}
+
+.scoreCard p
+{
+    font-size: 2em;
+}
+
+p.submitScore
+{
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+}
+
+.scoreCard input[type="text"] 
+{
+    border: none;
+    border-bottom: solid;
+    font-size: 3vh;
+}
+
+textarea:focus, input:focus
+{
+    outline: 0;
+}
+
+.row
+{
+    text-align:center;
+    margin: 0 0;
+    padding: 0 0;
+}
+
+.clearfix
+{
+    clear:both;
+}

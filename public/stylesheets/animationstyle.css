@@ -1,0 +1,25 @@
+.failure{
+    animation-name: failureDeckAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes failureDeckAnimation
+{
+    50%  { background-color: Red; }
+    100% { background-color: #aaaaaa; }
+}
+
+.success{
+    animation-name: successDeckAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;        
+    animation-iteration-count: infinite;
+}
+
+@keyframes successDeckAnimation
+{
+    50%   { background: white; }
+    100% { background: #aaaaaa; }
+}

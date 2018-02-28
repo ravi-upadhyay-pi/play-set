@@ -1,0 +1,90 @@
+<html ng-app="set">
+	<head>
+		<link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/animationstyle.css">
+		<script src="javascripts/lib/angular.min.js"></script>
+		<script src="javascripts/lib/angular-route.min.js"></script>	
+		<script src="javascripts/Card.js"></script>
+		<script src="javascripts/Deck.js"></script>
+		<script src="javascripts/Set.js"></script>
+	</head>
+
+	<body ng-controller="bodyController">
+
+		<div class="navBar" ng-controller="navController">
+			<div 
+				class="banner text" 
+				ng-click="changeMode(mode)" 
+				ng-class="{'active': Data.mode == mode}" 
+				ng-repeat="mode in Data.modes">
+				{{mode}}
+			</div>
+			<div 
+				class="banner text score" 
+				ng-class="Data.state" 
+				ng-show="Data.mode=='classic'">
+				{{Data.deck.score}}/{{Data.deck.totalSets.length}}
+			</div>
+			<div 
+				class="banner text score" 
+				ng-class="Data.state" 
+				ng-show="Data.mode !='classic'">
+				{{Data.deck.score}}
+			</div>
+			<div 
+				class="banner icon" 
+				ng-show="Data.mode != 'daily'"
+				ng-click="generateNewDeck()">
+				<i class="fa fa-refresh" ></i>
+			</div>
+			<div 
+				class="banner icon" 
+				ng-show="Data.mode == 'classic' || Data.mode == 'infinite'"
+				ng-click="getHelp()">
+				<i class="fa fa-question" ></i>
+			</div>
+		</div>
+
+
+		<div class="deck" ng-controller="deckController">
+			<ul class="row" ng-repeat="rowIndex in getList(4)">	
+				<li 
+					class="card bgcolor{{Data.allCards[card.id][2]}}" 
+					ng-repeat="card in Data.deck.cards.slice(3*rowIndex, 3*(rowIndex+1))" 
+					ng-class="{'selected': Data.deck.isSelected[card.pos]}"
+					ng-click="toggleCard(card.pos)">
+					<i 
+						class="shape fa fa-{{Data.icons[Data.allCards[card.id][3]]}} color{{Data.allCards[card.id][1]}}" 
+						ng-repeat="i in getList(Data.allCards[card.id][0])">
+					</i>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+		</div>
+
+
+		<div ng-controller="scoreCardController"
+			class="scoreCard"
+			ng-show="Data.showScoreCard == true">
+
+			<p class="timeTaken">
+				Time Taken: {{Data.scoreCard.timeTaken.minutes}} minutes {{Data.scoreCard.timeTaken.seconds}} seconds
+			</p>
+
+			<p class="rank" ng-show="Data.mode=='daily'">
+				Rank: {{Data.scoreCard.rank + 1}} 
+			</p>
+
+			<p class="name" ng-show="Data.mode=='daily'">
+				Name: <input type="text" ng-model="Data.scoreCard.name">
+			</p>
+
+			<p class="submitScore" ng-click="submitScore()" ng-show="Data.mode=='daily'"> 
+				Submit Score
+			</p>
+
+		</div>
+
+	</body>
+</html>
