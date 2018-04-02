@@ -1,12 +1,12 @@
 var express = require('express'),
 	sqlite = require('sqlite3'),
-	db = new sqlite.Database('./database/db'),
+	db =  new sqlite.Database(':memory:'),
 	router = express.Router(),
 	Deck = require('../public/javascripts/Deck.js');
-	
-	
-router.route('/daily')
 
+db.run("CREATE TABLE DAILY (date TEXT, puzzle TEXT, topScores TEXT)");
+
+router.route('/daily')
 	// query for the daily puzzle
 	.get(function(req, res){
 		var dt = new Date();
@@ -27,7 +27,6 @@ router.route('/daily')
 			});
 		});
 	})
-	
 	// put new record in database
 	.put(function(req, res){
 		var dt = new Date();

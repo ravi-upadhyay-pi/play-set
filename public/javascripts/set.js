@@ -73,6 +73,7 @@ function($scope, $rootScope, $timeout, $http, Data){
 	};
 	
 	var initializeNewDeck = function(){
+		Data.scoreCard.startTime = new Date();
 		Data.deck = new Deck(12, 6, 100);
 	};
 	
@@ -158,6 +159,7 @@ function($scope, $rootScope, $timeout, $http, Data){
 		Data.scoreCard.startTime = new Date();
 		Data.state = 'waiting';
 		Data.showScoreCard = false;
+
 		if(Data.mode == 'daily'){
 			$http.get('/api/daily').then(
 				function(response){
@@ -171,9 +173,7 @@ function($scope, $rootScope, $timeout, $http, Data){
 				}
 			)
 		}
-		if(Data.mode != 'daily'){
-			initializeNewDeck();
-		}	
+		else initializeNewDeck();
 	});
 
 	initializeNewDeck();
